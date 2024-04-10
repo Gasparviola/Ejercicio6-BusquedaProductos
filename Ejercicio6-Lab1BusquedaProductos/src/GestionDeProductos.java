@@ -193,7 +193,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
             return;
         }
 
-        String descripcion = jtxtDescripcion.getText().toLowerCase();
+        String descripcion = jtxtDescripcion.getText();
 
         try{
             precio =Double.parseDouble(jtxtPrecio.getText());

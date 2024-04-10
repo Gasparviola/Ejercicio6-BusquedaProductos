@@ -69,12 +69,6 @@ public class busquedaPorNombre extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTProductos);
 
-        jtxtProductoABuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxtProductoABuscarActionPerformed(evt);
-            }
-        });
-
         jbtnBuscar.setText("Buscar");
         jbtnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,33 +115,13 @@ public class busquedaPorNombre extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtxtProductoABuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtProductoABuscarActionPerformed
-        
-//        borrarFilas();
-//        
-//        String producto = jtxtProductoABuscar.getText();
-//        
-//           for(Producto p : Menu.getProductos()){
-//            
-//            if(p.getDescripcion().equals(producto)){
-//                modelo.addRow(new Object[]{
-//                    p.getCodigo(),
-//                    p.getDescripcion(),
-//                    p.getPrecio(),
-//                    p.getStock()
-//                });
-//            } 
-//        }
-        
-    }//GEN-LAST:event_jtxtProductoABuscarActionPerformed
-
     private void jbtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBuscarActionPerformed
  
         borrarFilas();
-        String producto = jtxtProductoABuscar.getText().toLowerCase();
+        String producto = jtxtProductoABuscar.getText();
         boolean aux = false;
         for(Producto p : Menu.getProductos()){
-            if(p.getDescripcion().equals(producto)){
+            if(p.getDescripcion().equalsIgnoreCase(producto)){
                 modelo.addRow(new Object[]{
                     p.getCodigo(),
                     p.getDescripcion(),
