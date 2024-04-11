@@ -49,6 +49,9 @@ public class busquedaPorPrecio extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jtxtValor2 = new javax.swing.JTextField();
 
+        setClosable(true);
+        setIconifiable(true);
+
         jLabel1.setBackground(new java.awt.Color(102, 255, 255));
         jLabel1.setFont(new java.awt.Font("Dialog", 2, 14)); // NOI18N
         jLabel1.setText("Busqueda por Precio");

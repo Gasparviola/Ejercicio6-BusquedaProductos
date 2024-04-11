@@ -46,6 +46,9 @@ public class buscarPorCategoria extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTProductos = new javax.swing.JTable();
 
+        setClosable(true);
+        setIconifiable(true);
+
         jLabel1.setBackground(new java.awt.Color(102, 255, 255));
         jLabel1.setFont(new java.awt.Font("Dialog", 2, 14)); // NOI18N
         jLabel1.setText("Busqueda por Categoria o rubro");
@@ -114,7 +117,7 @@ public class buscarPorCategoria extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         borrarFilas();
         for(Producto producto:Menu.lista){
-            if(producto.getCategorias().equals(jCCategoria.getSelectedItem()))
+            if(producto.getRubro().equals(jCCategoria.getSelectedItem()))
                 modelo.addRow(new Object[]{
                     producto.getCodigo(),
                     producto.getDescripcion(),

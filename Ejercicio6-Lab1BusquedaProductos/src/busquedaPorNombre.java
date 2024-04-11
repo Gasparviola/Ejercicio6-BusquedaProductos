@@ -46,6 +46,9 @@ public class busquedaPorNombre extends javax.swing.JInternalFrame {
         jtxtProductoABuscar = new javax.swing.JTextField();
         jbtnBuscar = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+
         jLabel1.setBackground(new java.awt.Color(102, 255, 255));
         jLabel1.setFont(new java.awt.Font("Dialog", 2, 14)); // NOI18N
         jLabel1.setText("Busqueda por Nombre");

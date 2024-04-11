@@ -42,6 +42,9 @@ private Producto productoenco=null;
         jbtnEliminarProducto = new javax.swing.JButton();
         jbtnNuevo = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+
         jLabel3.setText("Descripción");
 
         jLabel4.setText("Precio");
@@ -119,9 +122,8 @@ private Producto productoenco=null;
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jcCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jtxtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jtxtStock, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                                        .addComponent(jtxtPrecio, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(jtxtStock)
+                                    .addComponent(jtxtPrecio)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jtxtCodigo)
                                         .addGap(18, 18, 18)
@@ -210,7 +212,7 @@ private Producto productoenco=null;
             jtxtDescripcion.setText(productoenco.getDescripcion());
             jtxtPrecio.setText(productoenco.getPrecio()+"");
             jtxtStock.setText(productoenco.getStock()+"");
-            jcCategorias.setSelectedItem(productoenco.getCategorias());
+            jcCategorias.setSelectedItem(productoenco.getRubro());
         }else{
             JOptionPane.showMessageDialog(this, "Producto no encontrado.");
             productoenco=null;
