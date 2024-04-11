@@ -68,6 +68,12 @@ public class busquedaPorNombre extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTProductos);
 
+        jtxtProductoABuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtxtProductoABuscarKeyReleased(evt);
+            }
+        });
+
         jbtnBuscar.setText("Buscar");
         jbtnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,26 +122,42 @@ public class busquedaPorNombre extends javax.swing.JInternalFrame {
 
     private void jbtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBuscarActionPerformed
  
+//        borrarFilas();
+//        String producto = jtxtProductoABuscar.getText();
+//        boolean aux = false;
+//        for(Producto p : Menu.lista){
+//            if(p.getDescripcion().equalsIgnoreCase(producto)){
+//                modelo.addRow(new Object[]{
+//                    p.getCodigo(),
+//                    p.getDescripcion(),
+//                    p.getPrecio(),
+//                    p.getStock()
+//                });
+//                aux = true;
+//            }
+//        }        
+//        if(aux == false){
+//            JOptionPane.showMessageDialog(this, "El producto no se encuentra en la lista");
+//            jtxtProductoABuscar.setText("");
+//            jtxtProductoABuscar.requestFocus();
+//        }
+    }//GEN-LAST:event_jbtnBuscarActionPerformed
+
+    private void jtxtProductoABuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtProductoABuscarKeyReleased
+        // TODO add your handling code here:
         borrarFilas();
         String producto = jtxtProductoABuscar.getText();
-        boolean aux = false;
         for(Producto p : Menu.lista){
-            if(p.getDescripcion().equalsIgnoreCase(producto)){
+            if(p.getDescripcion().toLowerCase().startsWith(producto.toLowerCase())){
                 modelo.addRow(new Object[]{
                     p.getCodigo(),
                     p.getDescripcion(),
                     p.getPrecio(),
                     p.getStock()
-                });
-                aux = true;
+                });    
             }
-        }        
-        if(aux == false){
-            JOptionPane.showMessageDialog(this, "El producto no se encuentra en la lista");
-            jtxtProductoABuscar.setText("");
-            jtxtProductoABuscar.requestFocus();
         }
-    }//GEN-LAST:event_jbtnBuscarActionPerformed
+    }//GEN-LAST:event_jtxtProductoABuscarKeyReleased
 
     
     private void borrarFilas(){
