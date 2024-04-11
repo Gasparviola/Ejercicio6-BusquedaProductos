@@ -1,10 +1,7 @@
 
+import Producto.Producto;
 import javax.swing.table.DefaultTableModel;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 
 /**
  *
@@ -116,19 +113,13 @@ public class buscarPorCategoria extends javax.swing.JInternalFrame {
     private void jCCategoriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCCategoriaItemStateChanged
         // TODO add your handling code here:
         borrarFilas();
-        
-        String cat = (String)jCCategoria.getSelectedItem();
-        
-        for(Producto p : Menu.getProductos()){
-            
-            if(p.getCategorias().equals(cat)){
+        for(Producto producto:Menu.lista){
+            if(producto.getCategorias().equals(jCCategoria.getSelectedItem()))
                 modelo.addRow(new Object[]{
-                    p.getCodigo(),
-                    p.getDescripcion(),
-                    p.getPrecio(),
-                    p.getStock()
-                });
-            } 
+                    producto.getCodigo(),
+                    producto.getDescripcion(),
+                    producto.getPrecio(),
+                    producto.getStock()});
         }
     }//GEN-LAST:event_jCCategoriaItemStateChanged
 

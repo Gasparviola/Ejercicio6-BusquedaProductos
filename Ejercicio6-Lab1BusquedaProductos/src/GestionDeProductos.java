@@ -1,17 +1,14 @@
 
+import Producto.Producto;
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 
 /**
  *
  * @author El Notaloko-PC 2.0
  */
 public class GestionDeProductos extends javax.swing.JInternalFrame {
-
+private Producto productoenco=null;
     /**
      * Creates new form GestionDeProductos
      */
@@ -180,49 +177,19 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
 
         //Agrega un nuevo producto a la lista
         
-        int codigo;
-        double precio;
-        int stock ;
-
         try{
-            codigo = Integer.parseInt(jtxtCodigo.getText());
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(this, "Ingrese un numero entero");
-            jtxtCodigo.setText("");
-            jtxtCodigo.requestFocus();
-            return;
+            int codigo=Integer.parseInt(jtxtCodigo.getText());
+            String descripcion=jtxtDescripcion.getText();
+            double precio=Double.parseDouble(jtxtPrecio.getText());
+            String rubro=(String)jcCategorias.getSelectedItem();
+            int stock=Integer.parseInt(jtxtStock.getText());
+            Producto producto=new Producto(codigo,descripcion,precio,stock,rubro);
+            Menu.lista.add(producto);
+            JOptionPane.showMessageDialog(this, "Se ha guardado correctamente.");
+            limpiarCampos();
+        }catch(NumberFormatException fe){
+            JOptionPane.showMessageDialog(this, "Verifique haber ingresado numeros.");
         }
-
-        String descripcion = jtxtDescripcion.getText();
-
-        try{
-            precio =Double.parseDouble(jtxtPrecio.getText());
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(this, "El precio tiene que ser un numero");
-            jtxtPrecio.setText("");
-            jtxtPrecio.requestFocus();
-            return;
-        }
-
-        try{
-            stock = Integer.parseInt(jtxtStock.getText());
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(this, "El stock tiene que ser un numero");
-            jtxtStock.setText("");
-            jtxtStock.requestFocus();
-            return;
-        }
-
-        String categoria =(String) jcCategorias.getSelectedItem();
-
-        Producto p = new Producto(codigo, descripcion,precio, stock, categoria);
-
-        Menu.getProductos().add(p);
-        
-        JOptionPane.showMessageDialog(this, "Producto Guardado");
-
-        //Una vez agregado el producto limpia todos los campos
-        limpiarCampos();
 
     }//GEN-LAST:event_jbtnGuardarProductoActionPerformed
     
@@ -233,20 +200,21 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
 
     private void jbtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBuscarActionPerformed
         // Busca por codigo el producto si es que este se encuentra       
-        boolean aux = false;
-        for(Producto p : Menu.getProductos()){
-            if(p.getCodigo() == Integer.parseInt(jtxtCodigo.getText())){
-                jtxtDescripcion.setText(p.getDescripcion());
-                jtxtPrecio.setText("" + p.getPrecio());
-                jtxtStock.setText("" + p.getStock());
-                jcCategorias.setSelectedItem(p.getCategorias());
-                aux = true;
-                return;
+        int codigo=Integer.parseInt(jtxtCodigo.getText());
+        for(Producto it:Menu.lista){
+            if(it.getCodigo()==codigo){
+                productoenco=it;
             }
-        }        
-        if(aux == false){
-            JOptionPane.showMessageDialog(this, "El producto no se encuentra en la lista");
-        }   
+        }
+        if(productoenco!=null){
+            jtxtDescripcion.setText(productoenco.getDescripcion());
+            jtxtPrecio.setText(productoenco.getPrecio()+"");
+            jtxtStock.setText(productoenco.getStock()+"");
+            jcCategorias.setSelectedItem(productoenco.getCategorias());
+        }else{
+            JOptionPane.showMessageDialog(this, "Producto no encontrado.");
+            productoenco=null;
+        }
     }//GEN-LAST:event_jbtnBuscarActionPerformed
 
     private void jbtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSalirActionPerformed
@@ -255,22 +223,17 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbtnSalirActionPerformed
 
     private void jbtnEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnEliminarProductoActionPerformed
-        // Eliminamos el producto seleccionado
-        
-        // Buscar el producto en la lista
-    for (Producto p : Menu.getProductos()) {
-        if (p.getCodigo() == Integer.parseInt(jtxtCodigo.getText())) {
-            // Remover el producto de la lista
-            Menu.getProductos().remove(p);
-            JOptionPane.showMessageDialog(this, "Producto eliminado correctamente.");
-            // Limpiar los campos después de eliminar el producto
-            limpiarCampos();
-            return; // Terminar el método después de eliminar el producto
+        if(productoenco!=null){
+            boolean resultado=Menu.lista.remove(productoenco);
+            if(resultado=true){
+                JOptionPane.showMessageDialog(this, "Producto borrado.");
+                limpiarCampos();
+            }else{
+                JOptionPane.showMessageDialog(this, "No se encontro.");
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "No hay producto para borrar.");
         }
-    }
-    
-        //Si no lo encontro disparamos otro JOptionPane
-        JOptionPane.showMessageDialog(this,"El producto no se encuentra agragado a la lista");
         
     }//GEN-LAST:event_jbtnEliminarProductoActionPerformed
 

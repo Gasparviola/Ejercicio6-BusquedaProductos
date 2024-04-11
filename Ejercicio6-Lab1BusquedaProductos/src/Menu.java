@@ -1,10 +1,8 @@
 
+import Producto.Producto;
 import java.util.ArrayList;
+import java.util.TreeSet;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 
 /**
  *
@@ -12,18 +10,8 @@ import java.util.ArrayList;
  */
 public class Menu extends javax.swing.JFrame {
 
-//    private static TreeSet<Producto> ListaDeProductos = new TreeSet<>();
-//    
-//    public static TreeSet<Producto>  getListaDeProductos(){
-//        return ListaDeProductos;
-//    }
-    private static ArrayList<Producto> productos = new ArrayList<>();
+public static TreeSet<Producto>lista=new TreeSet<>();
 
-    public  static ArrayList<Producto> getProductos() {
-        return productos;
-    }
-    
-    
     /**
      * Creates new form Menu
      */

@@ -1,11 +1,7 @@
 
+import Producto.Producto;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 
 /**
  *
@@ -120,7 +116,7 @@ public class busquedaPorNombre extends javax.swing.JInternalFrame {
         borrarFilas();
         String producto = jtxtProductoABuscar.getText();
         boolean aux = false;
-        for(Producto p : Menu.getProductos()){
+        for(Producto p : Menu.lista){
             if(p.getDescripcion().equalsIgnoreCase(producto)){
                 modelo.addRow(new Object[]{
                     p.getCodigo(),

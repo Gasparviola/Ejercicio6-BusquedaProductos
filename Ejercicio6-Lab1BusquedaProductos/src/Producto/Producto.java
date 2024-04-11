@@ -1,3 +1,5 @@
+package Producto;
+
 
 public class Producto {
     private int codigo;
@@ -56,8 +58,6 @@ public class Producto {
     public void setCategorias(String categorias) {
         this.categorias = categorias;
     }
-
-    
     
     
     

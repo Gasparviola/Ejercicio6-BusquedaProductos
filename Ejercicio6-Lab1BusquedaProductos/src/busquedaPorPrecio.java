@@ -1,11 +1,8 @@
 
+import Producto.Producto;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 
 /**
  *
@@ -134,7 +131,7 @@ public class busquedaPorPrecio extends javax.swing.JInternalFrame {
         double valor2 = Double.parseDouble(jtxtValor2.getText());
  
         boolean aux = false;
-        for(Producto p : Menu.getProductos()){
+        for(Producto p : Menu.lista){
             if( p.getPrecio() >= valor1 && p.getPrecio() <= valor2){
                 modelo.addRow(new Object[]{
                     p.getCodigo(),
