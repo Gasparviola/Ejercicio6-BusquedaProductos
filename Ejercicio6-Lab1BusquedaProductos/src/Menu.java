@@ -29,7 +29,6 @@ public static TreeSet<Producto>lista=new TreeSet<>();
     private void initComponents() {
 
         Escritorio = new javax.swing.JDesktopPane();
-        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -41,9 +40,6 @@ public static TreeSet<Producto>lista=new TreeSet<>();
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Escritorio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/pexels-benjamin-suter-3617500.jpg"))); // NOI18N
-        Escritorio.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 320));
 
         jMenu1.setText("Administración");
 
@@ -180,7 +176,6 @@ public static TreeSet<Producto>lista=new TreeSet<>();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane Escritorio;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
