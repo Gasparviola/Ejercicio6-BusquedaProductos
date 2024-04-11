@@ -18,6 +18,7 @@ public class busquedaPorPrecio extends javax.swing.JInternalFrame {
     public busquedaPorPrecio() {
         initComponents();
         armarCabecera();
+        cargarTabla();
     }
 
     public void armarCabecera(){
@@ -28,6 +29,17 @@ public class busquedaPorPrecio extends javax.swing.JInternalFrame {
         
         jTProductos.setModel(modelo);
         
+    }
+    
+    public void cargarTabla(){
+        for (Producto prod : Menu.lista) {
+                modelo.addRow(new Object[]{
+                prod.getCodigo(),
+                prod.getDescripcion(),
+                prod.getPrecio(),
+                prod.getStock(),
+            });
+        }
     }
     
     

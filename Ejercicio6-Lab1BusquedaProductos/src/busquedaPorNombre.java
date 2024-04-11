@@ -1,6 +1,5 @@
 
 import Producto.Producto;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -17,6 +16,7 @@ public class busquedaPorNombre extends javax.swing.JInternalFrame {
     public busquedaPorNombre() {
         initComponents();
         armarCabecera();
+        cargarTabla();
     }
     
     public void armarCabecera(){
@@ -27,6 +27,17 @@ public class busquedaPorNombre extends javax.swing.JInternalFrame {
         
         jTProductos.setModel(modelo);
         
+    }
+    
+    public void cargarTabla(){
+        for (Producto prod : Menu.lista) {
+                modelo.addRow(new Object[]{
+                prod.getCodigo(),
+                prod.getDescripcion(),
+                prod.getPrecio(),
+                prod.getStock(),
+            });
+        }
     }
     
 
@@ -44,7 +55,6 @@ public class busquedaPorNombre extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTProductos = new javax.swing.JTable();
         jtxtProductoABuscar = new javax.swing.JTextField();
-        jbtnBuscar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -75,13 +85,6 @@ public class busquedaPorNombre extends javax.swing.JInternalFrame {
             }
         });
 
-        jbtnBuscar.setText("Buscar");
-        jbtnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnBuscarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,9 +96,7 @@ public class busquedaPorNombre extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtxtProductoABuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jbtnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtxtProductoABuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -110,8 +111,7 @@ public class busquedaPorNombre extends javax.swing.JInternalFrame {
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jtxtProductoABuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtnBuscar))
+                    .addComponent(jtxtProductoABuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(78, Short.MAX_VALUE))
@@ -119,29 +119,6 @@ public class busquedaPorNombre extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jbtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBuscarActionPerformed
- 
-//        borrarFilas();
-//        String producto = jtxtProductoABuscar.getText();
-//        boolean aux = false;
-//        for(Producto p : Menu.lista){
-//            if(p.getDescripcion().equalsIgnoreCase(producto)){
-//                modelo.addRow(new Object[]{
-//                    p.getCodigo(),
-//                    p.getDescripcion(),
-//                    p.getPrecio(),
-//                    p.getStock()
-//                });
-//                aux = true;
-//            }
-//        }        
-//        if(aux == false){
-//            JOptionPane.showMessageDialog(this, "El producto no se encuentra en la lista");
-//            jtxtProductoABuscar.setText("");
-//            jtxtProductoABuscar.requestFocus();
-//        }
-    }//GEN-LAST:event_jbtnBuscarActionPerformed
 
     private void jtxtProductoABuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtProductoABuscarKeyReleased
         // TODO add your handling code here:
@@ -173,7 +150,6 @@ public class busquedaPorNombre extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTProductos;
-    private javax.swing.JButton jbtnBuscar;
     private javax.swing.JTextField jtxtProductoABuscar;
     // End of variables declaration//GEN-END:variables
 }
