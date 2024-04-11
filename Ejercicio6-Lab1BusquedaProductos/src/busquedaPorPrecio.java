@@ -57,7 +57,6 @@ public class busquedaPorPrecio extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTProductos = new javax.swing.JTable();
         jtxtValor1 = new javax.swing.JTextField();
-        jbtnBuscarPrice = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jtxtValor2 = new javax.swing.JTextField();
 
@@ -84,15 +83,14 @@ public class busquedaPorPrecio extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTProductos);
 
-        jbtnBuscarPrice.setText("Buscar");
-        jbtnBuscarPrice.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnBuscarPriceActionPerformed(evt);
-            }
-        });
-
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("y");
+
+        jtxtValor2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtxtValor2KeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,13 +104,11 @@ public class busquedaPorPrecio extends javax.swing.JInternalFrame {
                         .addGap(12, 12, 12)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtxtValor1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtxtValor1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtxtValor2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbtnBuscarPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jtxtValor2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -128,7 +124,6 @@ public class busquedaPorPrecio extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jtxtValor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtnBuscarPrice)
                     .addComponent(jtxtValor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
@@ -139,31 +134,22 @@ public class busquedaPorPrecio extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbtnBuscarPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBuscarPriceActionPerformed
-
+    private void jtxtValor2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtValor2KeyReleased
+        // TODO add your handling code here:
         borrarFilas();
         double valor1 =Double.parseDouble(jtxtValor1.getText());
         double valor2 = Double.parseDouble(jtxtValor2.getText());
- 
-        boolean aux = false;
-        for(Producto p : Menu.lista){
+           for(Producto p : Menu.lista){    
             if( p.getPrecio() >= valor1 && p.getPrecio() <= valor2){
                 modelo.addRow(new Object[]{
                     p.getCodigo(),
                     p.getDescripcion(),
                     p.getPrecio(),
                     p.getStock()
-                });
-                aux = true;
+                });    
             }
         }
-        if(aux == false){
-            JOptionPane.showMessageDialog(this, "No se encuentran productos en ese rango de precios");
-            jtxtValor1.setText("");
-            jtxtValor2.setText("");
-            jtxtValor1.requestFocus();
-        }
-    }//GEN-LAST:event_jbtnBuscarPriceActionPerformed
+    }//GEN-LAST:event_jtxtValor2KeyReleased
 
     private void borrarFilas(){
         int filas = jTProductos.getRowCount() - 1;
@@ -180,7 +166,6 @@ public class busquedaPorPrecio extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTProductos;
-    private javax.swing.JButton jbtnBuscarPrice;
     private javax.swing.JTextField jtxtValor1;
     private javax.swing.JTextField jtxtValor2;
     // End of variables declaration//GEN-END:variables
